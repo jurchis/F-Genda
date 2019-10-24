@@ -14,7 +14,6 @@ public class DataBaseConfiguration {
         InputStream inputStream = DataBaseConfiguration.class.getClassLoader()
                 .getResourceAsStream("db.properties");
 
-
         try {
             properties.load(inputStream);
 
@@ -29,6 +28,4 @@ public class DataBaseConfiguration {
             }
         }
     }
-
-
 }
