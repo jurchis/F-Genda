@@ -56,6 +56,58 @@ public class GendaRepository {
         }
     }
 
+    public void updateElementName(long id, String first_name) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE fgenda_items SET first_name=? WHERE id=?";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, first_name);
+            preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void updateElementSurname(long id, String last_name) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE fgenda_items SET last_name=? WHERE id=?";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, last_name);
+            preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void updateElement(long id, String comment) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE fgenda_items SET comment=? WHERE id=?";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, comment);
+            preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void updateElementNumber(long id, String phone_no) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE fgenda_items SET phone_no=? WHERE id=?";
+        try(Connection connection=DataBaseConfiguration.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setString(1, phone_no);
+            preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+
+    public void updateElement(long id, boolean work_no) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE fgenda_items SET work_no=? WHERE id=?";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setBoolean(1, work_no);
+            preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+
 //    public List<GendaElement> getSelectedElement(String first_name, String last_name) throws SQLException, IOException, ClassNotFoundException {
 //
 //        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +

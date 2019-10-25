@@ -27,7 +27,12 @@ public class App {
         System.out.println(gendaElement);
 
         gendaRepository.deleteGendaElement(7);
-        ;
 
+
+        gendaRepository.updateElementNumber(3,"+796784648638");
+        gendaRepository.updateElementName(3, "Cosmin");
+        gendaRepository.updateElementSurname(3,"Olaru");
+        gendaRepository.updateElement(3,"Facility Department");
+        gendaRepository.updateElement(3, true);
     }
 }
