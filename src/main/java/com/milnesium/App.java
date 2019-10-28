@@ -34,5 +34,17 @@ public class App {
         gendaRepository.updateElementSurname(3,"Olaru");
         gendaRepository.updateElement(3,"Facility Department");
         gendaRepository.updateElement(3, true);
+
+        gendaRepository.deleteGendaElements(13,14,15);
+
+        System.out.println("Printing Selected Search by Name Elements...");
+        List<GendaElement> gendaSelectedElement = gendaRepository.getSelectedName("Cosmin");
+        System.out.println(gendaSelectedElement);
+
+        System.out.println("Printing Selected Search by Surname Elements...");
+        List<GendaElement> getSelectedSurnameElements = gendaRepository.getSelectedSurnameElements("Jurchis");
+        System.out.println(getSelectedSurnameElements);
+
+
     }
 }

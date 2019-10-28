@@ -56,6 +56,56 @@ public class GendaRepository {
         }
     }
 
+    public void deleteGendaElements(long id, long id1) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM fgenda_items WHERE id IN (?,?);";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(2, id1);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void deleteGendaElements(long id, long id1, long id2) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM fgenda_items WHERE id IN (?,?,?);";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(2, id1);
+            preparedStatement.setLong(3, id2);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void deleteGendaElements(long id, long id1, long id2, long id3) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM fgenda_items WHERE id IN (?,?,?,?);";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(2, id1);
+            preparedStatement.setLong(3, id2);
+            preparedStatement.setLong(4, id3);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void deleteGendaElements(long id, long id1, long id2, long id3, long id4) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM fgenda_items WHERE id IN (?,?,?,?,?);";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(2, id1);
+            preparedStatement.setLong(3, id2);
+            preparedStatement.setLong(4, id3);
+            preparedStatement.setLong(4, id4);
+
+            preparedStatement.executeUpdate();
+        }
+    }
+
     public void updateElementName(long id, String first_name) throws SQLException, IOException, ClassNotFoundException {
         String sql = "UPDATE fgenda_items SET first_name=? WHERE id=?";
         try (Connection connection = DataBaseConfiguration.getConnection();
@@ -96,7 +146,6 @@ public class GendaRepository {
         }
     }
 
-
     public void updateElement(long id, boolean work_no) throws SQLException, IOException, ClassNotFoundException {
         String sql = "UPDATE fgenda_items SET work_no=? WHERE id=?";
         try (Connection connection = DataBaseConfiguration.getConnection();
@@ -107,34 +156,62 @@ public class GendaRepository {
         }
     }
 
+    public List<GendaElement> getSelectedName(String first_name) throws SQLException, IOException, ClassNotFoundException {
 
-//    public List<GendaElement> getSelectedElement(String first_name, String last_name) throws SQLException, IOException, ClassNotFoundException {
-//
-//        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +
-//                "WHERE first_name=? OR last_name=? ";
-//
-//        List<GendaElement> gendaSelectedElements = new ArrayList<>();
-//
-//        try (Connection connection = DataBaseConfiguration.getConnection();
-//             PreparedStatement preparedStatement = connection.prepareStatement(sql) {
-//
-//            preparedStatement.setString(1, first_name);
-//            preparedStatement.setString(2,last_name);
-//
-//            ResultSet resultSelectedSet = preparedStatement.executeUpdate()} {
-//
-//            while (resultSelectedSet.next()) {
-//                GendaElement gendaSelectedElement = new GendaElement();
-//                gendaSelectedElement.setId(resultSelectedSet.getLong("id"));
-//                gendaSelectedElement.setFirst_name(resultSelectedSet.getString("first_name"));
-//                gendaSelectedElement.setLast_name(resultSelectedSet.getString("last_name"));
-//                gendaSelectedElement.setPhone_no(resultSelectedSet.getString("phone_no"));
-//                gendaSelectedElement.setComment(resultSelectedSet.getString("comment"));
-//                gendaSelectedElement.setWork_no(resultSelectedSet.getBoolean("work_no"));
-//                gendaSelectedElements.add(resultSelectedSet);
-//            }
-//        }
-//        return gendaSelectedElements;
-//    }
+        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +
+                "WHERE first_name=?";
+
+        List<GendaElement> gendaSelectedElements = new ArrayList<>();
+
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, first_name);
+
+            ResultSet resultSelectedSet = preparedStatement.executeQuery();
+
+            while (resultSelectedSet.next()) {
+                GendaElement gendaSelectedElement = new GendaElement();
+                gendaSelectedElement.setId(resultSelectedSet.getLong("id"));
+                gendaSelectedElement.setFirst_name(resultSelectedSet.getString("first_name"));
+                gendaSelectedElement.setLast_name(resultSelectedSet.getString("last_name"));
+                gendaSelectedElement.setPhone_no(resultSelectedSet.getString("phone_no"));
+                gendaSelectedElement.setComment(resultSelectedSet.getString("comment"));
+                gendaSelectedElement.setWork_no(resultSelectedSet.getBoolean("work_no"));
+                gendaSelectedElements.add(gendaSelectedElement);
+            }
+        }
+
+        return gendaSelectedElements;
+    }
+
+    public List<GendaElement> getSelectedSurnameElements(String last_name) throws SQLException, IOException, ClassNotFoundException {
+
+        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +
+                "WHERE last_name=?";
+
+        List<GendaElement> gendaSelectedSurnameElements = new ArrayList<>();
+
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, last_name);
+
+            ResultSet resultSelectedSurnameSet = preparedStatement.executeQuery();
+
+            while (resultSelectedSurnameSet.next()) {
+                GendaElement gendaSelectedSurnameElement = new GendaElement();
+                gendaSelectedSurnameElement.setId(resultSelectedSurnameSet.getLong("id"));
+                gendaSelectedSurnameElement.setFirst_name(resultSelectedSurnameSet.getString("first_name"));
+                gendaSelectedSurnameElement.setLast_name(resultSelectedSurnameSet.getString("last_name"));
+                gendaSelectedSurnameElement.setPhone_no(resultSelectedSurnameSet.getString("phone_no"));
+                gendaSelectedSurnameElement.setComment(resultSelectedSurnameSet.getString("comment"));
+                gendaSelectedSurnameElement.setWork_no(resultSelectedSurnameSet.getBoolean("work_no"));
+                gendaSelectedSurnameElements.add(gendaSelectedSurnameElement);
+            }
+        }
+
+        return gendaSelectedSurnameElements;
+    }
 }
 
