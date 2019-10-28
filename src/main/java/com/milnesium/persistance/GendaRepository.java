@@ -156,17 +156,18 @@ public class GendaRepository {
         }
     }
 
-    public List<GendaElement> getSelectedName(String first_name) throws SQLException, IOException, ClassNotFoundException {
+    public List<GendaElement> getSelectedName(String nameOrSurname) throws SQLException, IOException, ClassNotFoundException {
 
         String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +
-                "WHERE first_name=?";
+                "WHERE first_name LIKE ? OR last_name LIKE ?";
 
         List<GendaElement> gendaSelectedElements = new ArrayList<>();
 
         try (Connection connection = DataBaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            preparedStatement.setString(1, first_name);
+            preparedStatement.setString(1, nameOrSurname);
+            preparedStatement.setString(2, nameOrSurname);
 
             ResultSet resultSelectedSet = preparedStatement.executeQuery();
 
@@ -181,37 +182,36 @@ public class GendaRepository {
                 gendaSelectedElements.add(gendaSelectedElement);
             }
         }
-
         return gendaSelectedElements;
     }
 
-    public List<GendaElement> getSelectedSurnameElements(String last_name) throws SQLException, IOException, ClassNotFoundException {
-
-        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +
-                "WHERE last_name=?";
-
-        List<GendaElement> gendaSelectedSurnameElements = new ArrayList<>();
-
-        try (Connection connection = DataBaseConfiguration.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-            preparedStatement.setString(1, last_name);
-
-            ResultSet resultSelectedSurnameSet = preparedStatement.executeQuery();
-
-            while (resultSelectedSurnameSet.next()) {
-                GendaElement gendaSelectedSurnameElement = new GendaElement();
-                gendaSelectedSurnameElement.setId(resultSelectedSurnameSet.getLong("id"));
-                gendaSelectedSurnameElement.setFirst_name(resultSelectedSurnameSet.getString("first_name"));
-                gendaSelectedSurnameElement.setLast_name(resultSelectedSurnameSet.getString("last_name"));
-                gendaSelectedSurnameElement.setPhone_no(resultSelectedSurnameSet.getString("phone_no"));
-                gendaSelectedSurnameElement.setComment(resultSelectedSurnameSet.getString("comment"));
-                gendaSelectedSurnameElement.setWork_no(resultSelectedSurnameSet.getBoolean("work_no"));
-                gendaSelectedSurnameElements.add(gendaSelectedSurnameElement);
-            }
-        }
-
-        return gendaSelectedSurnameElements;
-    }
+//    public List<GendaElement> getSelectedSurnameElements(String last_name) throws SQLException, IOException, ClassNotFoundException {
+//
+//        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +
+//                "WHERE last_name=?";
+//
+//        List<GendaElement> gendaSelectedSurnameElements = new ArrayList<>();
+//
+//        try (Connection connection = DataBaseConfiguration.getConnection();
+//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//
+//            preparedStatement.setString(1, last_name);
+//
+//            ResultSet resultSelectedSurnameSet = preparedStatement.executeQuery();
+//
+//            while (resultSelectedSurnameSet.next()) {
+//                GendaElement gendaSelectedSurnameElement = new GendaElement();
+//                gendaSelectedSurnameElement.setId(resultSelectedSurnameSet.getLong("id"));
+//                gendaSelectedSurnameElement.setFirst_name(resultSelectedSurnameSet.getString("first_name"));
+//                gendaSelectedSurnameElement.setLast_name(resultSelectedSurnameSet.getString("last_name"));
+//                gendaSelectedSurnameElement.setPhone_no(resultSelectedSurnameSet.getString("phone_no"));
+//                gendaSelectedSurnameElement.setComment(resultSelectedSurnameSet.getString("comment"));
+//                gendaSelectedSurnameElement.setWork_no(resultSelectedSurnameSet.getBoolean("work_no"));
+//                gendaSelectedSurnameElements.add(gendaSelectedSurnameElement);
+//            }
+//        }
+//
+//        return gendaSelectedSurnameElements;
+//    }
 }
 

@@ -37,14 +37,12 @@ public class App {
 
         gendaRepository.deleteGendaElements(13,14,15);
 
-        System.out.println("Printing Selected Search by Name Elements...");
-        List<GendaElement> gendaSelectedElement = gendaRepository.getSelectedName("Cosmin");
+        System.out.println("Printing Selected Search by Name or Surname Elements...");
+        List<GendaElement> gendaSelectedElement = gendaRepository.getSelectedName("Cosm%");
         System.out.println(gendaSelectedElement);
 
-        System.out.println("Printing Selected Search by Surname Elements...");
-        List<GendaElement> getSelectedSurnameElements = gendaRepository.getSelectedSurnameElements("Jurchis");
-        System.out.println(getSelectedSurnameElements);
-
-
+//        System.out.println("Printing Selected Search by Surname Elements...");
+//        List<GendaElement> getSelectedSurnameElements = gendaRepository.getSelectedSurnameElements("Jurchis");
+//        System.out.println(getSelectedSurnameElements);
     }
 }
