@@ -138,8 +138,8 @@ public class GendaRepository {
 
     public void updateElementNumber(long id, String phone_no) throws SQLException, IOException, ClassNotFoundException {
         String sql = "UPDATE fgenda_items SET phone_no=? WHERE id=?";
-        try(Connection connection=DataBaseConfiguration.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, phone_no);
             preparedStatement.setLong(2, id);
             preparedStatement.executeUpdate();

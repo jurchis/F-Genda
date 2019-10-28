@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Hello world!
  */
+
 public class App {
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         CreateGendaElementRequest request = new CreateGendaElementRequest();
@@ -29,13 +30,13 @@ public class App {
         gendaRepository.deleteGendaElement(7);
 
 
-        gendaRepository.updateElementNumber(3,"+796784648638");
+        gendaRepository.updateElementNumber(3, "+796784648638");
         gendaRepository.updateElementName(3, "Cosmin");
-        gendaRepository.updateElementSurname(3,"Olaru");
-        gendaRepository.updateElement(3,"Facility Department");
+        gendaRepository.updateElementSurname(3, "Olaru");
+        gendaRepository.updateElement(3, "Facility Department");
         gendaRepository.updateElement(3, true);
 
-        gendaRepository.deleteGendaElements(13,14,15);
+        gendaRepository.deleteGendaElements(13, 14, 15);
 
         System.out.println("Printing Selected Search by Name or Surname Elements...");
         List<GendaElement> gendaSelectedElement = gendaRepository.getSelectedName("Cosm%");
