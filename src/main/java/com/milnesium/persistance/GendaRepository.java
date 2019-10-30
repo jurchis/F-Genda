@@ -14,11 +14,11 @@ public class GendaRepository {
         try (Connection connection = DataBaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
 
-            preparedStatement.setString(1, request.getFirst_name());
-            preparedStatement.setString(2, request.getSecond_name());
-            preparedStatement.setString(3, request.getPhone_no());
+            preparedStatement.setString(1, request.getFirstName());
+            preparedStatement.setString(2, request.getSecondName());
+            preparedStatement.setString(3, request.getPhoneNo());
             preparedStatement.setString(4, request.getComment());
-            preparedStatement.setBoolean(5, request.isWork());
+            preparedStatement.setBoolean(5, request.isWorkNo());
 
             preparedStatement.executeUpdate();
         }
@@ -36,18 +36,19 @@ public class GendaRepository {
             while (resultSet.next()) {
                 GendaElement gendaElement = new GendaElement();
                 gendaElement.setId(resultSet.getLong("id"));
-                gendaElement.setFirst_name(resultSet.getString("first_name"));
-                gendaElement.setLast_name(resultSet.getString("last_name"));
-                gendaElement.setPhone_no(resultSet.getString("phone_no"));
+                gendaElement.setFirstName(resultSet.getString("first_name"));
+                gendaElement.setLastName(resultSet.getString("last_name"));
+                gendaElement.setPhoneNo(resultSet.getString("phone_no"));
                 gendaElement.setComment(resultSet.getString("comment"));
-                gendaElement.setWork_no(resultSet.getBoolean("work_no"));
+                gendaElement.setWorkNo(resultSet.getBoolean("work_no"));
                 gendaElements.add(gendaElement);
             }
         }
         return gendaElements;
     }
 
-    public void deleteGendaElement(long id) throws SQLException, IOException, ClassNotFoundException {
+    //overloading deleteGendaElements so it can delete one item or up to 5 randomly selected or all items from the db
+    public void deleteGendaElements(long id) throws SQLException, IOException, ClassNotFoundException {
         String sql = "DELETE FROM fgenda_items WHERE id=?;";
         try (Connection connection = DataBaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -103,6 +104,29 @@ public class GendaRepository {
             preparedStatement.setLong(4, id4);
 
             preparedStatement.executeUpdate();
+        }
+    }
+
+    //HUGE ISSUES WITH FINAL VARIABLE JAVA LANG PROJECT ISSUES COMPILER ERRORS WHILE USING ONLY STATEMENT!!!
+//    public void deleteGendaElements() throws SQLException, IOException, ClassNotFoundException {
+//        String sql = "DELETE FROM fgenda_items;";
+//        try (Connection connection = DataBaseConfiguration.getConnection();
+//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//            preparedStatement.executeUpdate();
+//        }
+//    }
+
+    //    public void deleteGendaElements() throws SQLException, IOException, ClassNotFoundException {
+//        String sql = "DELETE FROM fgenda_items;";
+//        try (Connection connection = DataBaseConfiguration.getConnection();
+//             Statement statement = connection.createStatement())
+//            statement.executeUpdate(sql))
+//     Solved below
+    public void deleteGendaElements() throws SQLException, IOException, ClassNotFoundException {
+        String sql = "DELETE FROM fgenda_items;";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             Statement statement = connection.createStatement()) {
+            statement.executeUpdate(sql);
         }
     }
 
@@ -174,11 +198,11 @@ public class GendaRepository {
             while (resultSelectedSet.next()) {
                 GendaElement gendaSelectedElement = new GendaElement();
                 gendaSelectedElement.setId(resultSelectedSet.getLong("id"));
-                gendaSelectedElement.setFirst_name(resultSelectedSet.getString("first_name"));
-                gendaSelectedElement.setLast_name(resultSelectedSet.getString("last_name"));
-                gendaSelectedElement.setPhone_no(resultSelectedSet.getString("phone_no"));
+                gendaSelectedElement.setFirstName(resultSelectedSet.getString("first_name"));
+                gendaSelectedElement.setLastName(resultSelectedSet.getString("last_name"));
+                gendaSelectedElement.setPhoneNo(resultSelectedSet.getString("phone_no"));
                 gendaSelectedElement.setComment(resultSelectedSet.getString("comment"));
-                gendaSelectedElement.setWork_no(resultSelectedSet.getBoolean("work_no"));
+                gendaSelectedElement.setWorkNo(resultSelectedSet.getBoolean("work_no"));
                 gendaSelectedElements.add(gendaSelectedElement);
             }
         }

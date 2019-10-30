@@ -15,11 +15,11 @@ import java.util.List;
 public class App {
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
         CreateGendaElementRequest request = new CreateGendaElementRequest();
-        request.setFirst_name("Dorin");
-        request.setSecond_name("Lurchis");
-        request.setPhone_no("+4075529999");
+        request.setFirstName("George");
+        request.setSecondName("Wash");
+        request.setPhoneNo("+667847739639");
         request.setComment("My friend since I was born");
-        request.setWork(false);
+        request.setWorkNo(false);
 
         GendaRepository gendaRepository = new GendaRepository();
         gendaRepository.createGendaElement(request);
@@ -27,8 +27,7 @@ public class App {
         List<GendaElement> gendaElement = gendaRepository.getGendaElement();
         System.out.println(gendaElement);
 
-        gendaRepository.deleteGendaElement(7);
-
+        gendaRepository.deleteGendaElements(7);
 
         gendaRepository.updateElementNumber(3, "+796784648638");
         gendaRepository.updateElementName(3, "Cosmin");
@@ -42,8 +41,7 @@ public class App {
         List<GendaElement> gendaSelectedElement = gendaRepository.getSelectedName("Cosm%");
         System.out.println(gendaSelectedElement);
 
-//        System.out.println("Printing Selected Search by Surname Elements...");
-//        List<GendaElement> getSelectedSurnameElements = gendaRepository.getSelectedSurnameElements("Jurchis");
-//        System.out.println(getSelectedSurnameElements);
+//        gendaRepository.deleteGendaElements();
+
     }
 }

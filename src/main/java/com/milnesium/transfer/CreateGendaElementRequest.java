@@ -1,34 +1,34 @@
 package com.milnesium.transfer;
 
 public class CreateGendaElementRequest {
-    private String first_name;
-    private String second_name;
-    private String phone_no;
+    private String firstName;
+    private String secondName;
+    private String phoneNo;
     private String comment;
-    private boolean work;
+    private boolean workNo;
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSecond_name() {
-        return second_name;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSecond_name(String second_name) {
-        this.second_name = second_name;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
-    public String getPhone_no() {
-        return phone_no;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhone_no(String phone_no) {
-        this.phone_no = phone_no;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     public String getComment() {
@@ -39,20 +39,20 @@ public class CreateGendaElementRequest {
         this.comment = comment;
     }
 
-    public boolean isWork() {
-        return work;
+    public boolean isWorkNo() {
+        return workNo;
     }
 
-    public void setWork(boolean work) {
-        this.work = work;
+    public void setWorkNo(boolean workNo) {
+        this.workNo = workNo;
     }
 
     @Override
     public String toString() {
         return "CreateGendaElementRequest{" +
-                "first_name='" + first_name + '\'' +
-                ", second_name='" + second_name + '\'' +
-                ", phone_no='" + phone_no + '\'' +
+                "first_name='" + firstName + '\'' +
+                ", second_name='" + secondName + '\'' +
+                ", phone_no='" + phoneNo + '\'' +
                 ", comment='" + comment + '\'' +
                 '}';
     }

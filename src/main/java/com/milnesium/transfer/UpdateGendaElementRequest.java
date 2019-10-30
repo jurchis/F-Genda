@@ -1,20 +1,20 @@
 package com.milnesium.transfer;
 
 public class UpdateGendaElementRequest {
-    private boolean work;
+    private boolean workNo;
 
-    public boolean isWork() {
-        return work;
+    public boolean isWorkNo() {
+        return workNo;
     }
 
-    public void setWork(boolean work) {
-        this.work = work;
+    public void setWorkNo(boolean workNo) {
+        this.workNo = workNo;
     }
 
     @Override
     public String toString() {
         return "UpdateGendaElementRequest{" +
-                "work=" + work +
+                "work=" + workNo +
                 '}';
     }
 }

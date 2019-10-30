@@ -2,11 +2,11 @@ package com.milnesium.domain;
 
 public class GendaElement {
     private long id;
-    private String first_name;
-    private String last_name;
-    private String phone_no;
+    private String firstName;
+    private String lastName;
+    private String phoneNo;
     private String comment;
-    private boolean work_no;
+    private boolean workNo;
 
     public long getId() {
         return id;
@@ -16,28 +16,28 @@ public class GendaElement {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getPhone_no() {
-        return phone_no;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhone_no(String phone_no) {
-        this.phone_no = phone_no;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     public String getComment() {
@@ -48,22 +48,22 @@ public class GendaElement {
         this.comment = comment;
     }
 
-    public boolean isWork_no() {
-        return work_no;
+    public boolean isWorkNo() {
+        return workNo;
     }
 
-    public void setWork_no(boolean work_no) {
-        this.work_no = work_no;
+    public void setWorkNo(boolean workNo) {
+        this.workNo = workNo;
     }
 
     @Override
     public String toString() {
         return "GendaElement{" +
                 "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", second_name='" + last_name + '\'' +
+                ", first_name='" + firstName + '\'' +
+                ", second_name='" + lastName + '\'' +
                 ", comment='" + comment + '\'' +
-                ", work_no=" + work_no +
+                ", work_no=" + workNo +
                 '}';
     }
 }
