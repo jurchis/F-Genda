@@ -107,28 +107,15 @@ public class GendaRepository {
         }
     }
 
-    //HUGE ISSUES WITH FINAL VARIABLE JAVA LANG PROJECT ISSUES COMPILER ERRORS WHILE USING ONLY STATEMENT!!!
+//    !!!
+//    //Good In theory but deactivating it as it might seriously damage the DB during a wrong request
 //    public void deleteGendaElements() throws SQLException, IOException, ClassNotFoundException {
 //        String sql = "DELETE FROM fgenda_items;";
 //        try (Connection connection = DataBaseConfiguration.getConnection();
-//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-//            preparedStatement.executeUpdate();
+//             Statement statement = connection.createStatement()) {
+//            statement.executeUpdate(sql);
 //        }
 //    }
-
-    //    public void deleteGendaElements() throws SQLException, IOException, ClassNotFoundException {
-//        String sql = "DELETE FROM fgenda_items;";
-//        try (Connection connection = DataBaseConfiguration.getConnection();
-//             Statement statement = connection.createStatement())
-//            statement.executeUpdate(sql))
-//     Solved below
-    public void deleteGendaElements() throws SQLException, IOException, ClassNotFoundException {
-        String sql = "DELETE FROM fgenda_items;";
-        try (Connection connection = DataBaseConfiguration.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.executeUpdate(sql);
-        }
-    }
 
     public void updateElementName(long id, String first_name) throws SQLException, IOException, ClassNotFoundException {
         String sql = "UPDATE fgenda_items SET first_name=? WHERE id=?";

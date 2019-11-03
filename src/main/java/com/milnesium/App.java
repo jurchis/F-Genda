@@ -17,7 +17,7 @@ public class App {
         CreateGendaElementRequest request = new CreateGendaElementRequest();
         request.setFirstName("George");
         request.setSecondName("Wash");
-        request.setPhoneNo("+667847739639");
+        request.setPhoneNo("+6678477396");
         request.setComment("My friend since I was born");
         request.setWorkNo(false);
 
