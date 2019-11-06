@@ -27,7 +27,7 @@ public class App {
         List<GendaElement> gendaElement = gendaRepository.getGendaElement();
         System.out.println(gendaElement);
 
-        gendaRepository.deleteGendaElements(7);
+        gendaRepository.deleteGendaElements((long) 7);
 
         gendaRepository.updateElementNumber(3, "+796784648638");
         gendaRepository.updateElementName(3, "Cosmin");

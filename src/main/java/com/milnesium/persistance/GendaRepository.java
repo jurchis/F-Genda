@@ -49,7 +49,7 @@ public class GendaRepository {
     }
 
     //overloading deleteGendaElements so it can delete one item or up to 5 randomly selected or all items from the db
-    public void deleteGendaElements(long id) throws SQLException, IOException, ClassNotFoundException {
+    public void deleteGendaElements(Long id) throws SQLException, IOException, ClassNotFoundException {
         String sql = "DELETE FROM fgenda_items WHERE id=?;";
         try (Connection connection = DataBaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

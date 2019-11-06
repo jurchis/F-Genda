@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-
 
 @WebServlet("/fgenda-elements")
 
@@ -35,10 +35,15 @@ public class GendaElementServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String id = req.getParameter("id");
+
+        String[] ids = req.getParameterValues("id");
 
         try {
-            gendaService.deleteAllGendaElements(Long.parseLong(id));
+            for (String i : ids
+            ) {
+                gendaService.deleteAllGendaElements(Long.parseLong(i));
+            }
+
         } catch (SQLException | ClassNotFoundException e) {
             resp.sendError(500, "Internal Server Error: " + e.getMessage());
         }

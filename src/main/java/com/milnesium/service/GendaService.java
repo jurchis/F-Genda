@@ -33,7 +33,7 @@ public class GendaService {
 //        gendaRepository.deleteGendaElements();
 //    }
 
-    public void deleteAllGendaElements(long id) throws SQLException, IOException, ClassNotFoundException {
+    public void deleteAllGendaElements(Long id) throws SQLException, IOException, ClassNotFoundException {
         System.out.println("Deleting fgenda-item: " + id + "...");
         gendaRepository.deleteGendaElements(id);
     }
