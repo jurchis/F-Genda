@@ -23,6 +23,11 @@ public class GendaService {
         gendaRepository.updateElement(id, request.isWorkNo());
     }
 
+    public void updateAllGendaElement(long id, UpdateGendaElementRequest request) throws SQLException, IOException, ClassNotFoundException {
+        System.out.println("Updating fgenda-item: " + request);
+        gendaRepository.updateAllElement(id, request);
+    }
+
 //    public void deleteAllGendaElements() throws SQLException, IOException, ClassNotFoundException {
 //        System.out.println("Deleting all items");
 //        gendaRepository.deleteGendaElements();

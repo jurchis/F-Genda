@@ -2,6 +2,7 @@ package com.milnesium.persistance;
 
 import com.milnesium.domain.GendaElement;
 import com.milnesium.transfer.CreateGendaElementRequest;
+import com.milnesium.transfer.UpdateGendaElementRequest;
 
 import java.io.IOException;
 import java.sql.*;
@@ -163,6 +164,22 @@ public class GendaRepository {
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setBoolean(1, work_no);
             preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    public void updateAllElement(long id, UpdateGendaElementRequest request) throws SQLException, IOException, ClassNotFoundException {
+        String sql = "UPDATE fgenda_items SET first_name=?, last_name=?, phone_no=?, comment=?, work_no=?  WHERE id=?";
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, request.getFirstName());
+            preparedStatement.setString(2, request.getLastName());
+            preparedStatement.setString(3, request.getPhoneNo());
+            preparedStatement.setString(4, request.getComment());
+            preparedStatement.setBoolean(5, request.isWorkNo());
+            preparedStatement.setLong(6, id);
+
             preparedStatement.executeUpdate();
         }
     }

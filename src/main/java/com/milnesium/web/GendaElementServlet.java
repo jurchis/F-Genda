@@ -56,7 +56,7 @@ public class GendaElementServlet extends HttpServlet {
                         .readValue(req.getReader(), UpdateGendaElementRequest.class);
 
         try {
-            gendaService.updateGendaElement(Long.parseLong(id), request);
+            gendaService.updateAllGendaElement(Long.parseLong(id), request);
         } catch (SQLException | ClassNotFoundException e) {
             resp.sendError(500, "Internal Server Error: " + e.getMessage());
         }
