@@ -213,6 +213,29 @@ public class GendaRepository {
         return gendaSelectedElements;
     }
 
+    public List<GendaElement> getSelectedName() throws SQLException, IOException, ClassNotFoundException {
+
+        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items";
+
+        List<GendaElement> gendaElements = new ArrayList<>();
+
+        try (Connection connection = DataBaseConfiguration.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                GendaElement gendaElement = new GendaElement();
+                gendaElement.setId(resultSet.getLong("id"));
+                gendaElement.setFirstName(resultSet.getString("first_name"));
+                gendaElement.setLastName(resultSet.getString("last_name"));
+                gendaElement.setPhoneNo(resultSet.getString("phone_no"));
+                gendaElement.setComment(resultSet.getString("comment"));
+                gendaElement.setWorkNo(resultSet.getBoolean("work_no"));
+                gendaElements.add(gendaElement);
+            }
+        }
+        return gendaElements;
+    }
+
 //    public List<GendaElement> getSelectedSurnameElements(String last_name) throws SQLException, IOException, ClassNotFoundException {
 //
 //        String sql = "SELECT id, first_name, last_name, phone_no, comment, work_no FROM fgenda_items " +

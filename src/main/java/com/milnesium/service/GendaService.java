@@ -68,4 +68,10 @@ public class GendaService {
         return gendaRepository.getSelectedName(nameOrSurname);
     }
 
+    public List<GendaElement> getSelectedName() throws SQLException, IOException, ClassNotFoundException {
+        System.out.println("Retrieving all fgenda-items...");
+        return gendaRepository.getSelectedName();
+    }
+
+
 }

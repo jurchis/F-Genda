@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/fgenda-elements")
@@ -66,16 +65,29 @@ public class GendaElementServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        try {
-            List<GendaElement> toDoItems = gendaService.getGendaElement();
 
-            String response = ObjectMapperConfiguration.getObjectMapper()
-                    .writeValueAsString(toDoItems);
+        String nameOrSurname = req.getParameter("nameOrSurname");
 
-            resp.getWriter().print(response);
+        if (nameOrSurname != null && !nameOrSurname.isEmpty()) {
+            try {
+                List<GendaElement> gendaElements = gendaService.getSelectedName(nameOrSurname);
+                String response = ObjectMapperConfiguration.getObjectMapper()
+                        .writeValueAsString(gendaElements);
+                resp.getWriter().print(response);
+            } catch (SQLException | ClassNotFoundException e) {
+                resp.sendError(500, "Internal Server Error: " + e.getMessage());
+            }
+        } else {
 
-        } catch (SQLException | ClassNotFoundException e) {
-            resp.sendError(500, "Internal Server Error: " + e.getMessage());
+            try {
+                List<GendaElement> gendaElements = gendaService.getSelectedName();
+                String response = ObjectMapperConfiguration.getObjectMapper()
+                        .writeValueAsString(gendaElements);
+                resp.getWriter().print(response);
+
+            } catch (SQLException | ClassNotFoundException e) {
+                resp.sendError(500, "Internal Server Error: " + e.getMessage());
+            }
         }
     }
 }
